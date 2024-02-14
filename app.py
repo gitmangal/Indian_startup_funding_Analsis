@@ -41,15 +41,19 @@ def load_overall_analysis():
     else:
         temp_df = df.groupby(['year', 'month'])['amount'].count().reset_index()
 
-    temp_df['x_axis'] = temp_df['month'].astype('str') + '-' + temp_df['year'].astype('str')
     fig3, ax3 = plt.subplots()
     ax3.plot(temp_df['x_axis'], temp_df['amount'])
-    nth_value = 3
-
+    
+    # Specify the nth value you want to show
+    nth_value = 5
+    
     # Set tick positions and labels
-    plt.xticks(x[::nth_value], x[::nth_value])
+    x_values = temp_df['x_axis'][::nth_value]
+    x_labels = temp_df['x_axis'].iloc[::nth_value]
+    ax3.set_xticks(x_values)
+    ax3.set_xticklabels(x_labels, rotation=45)  # Rotate x-axis labels for better readability
+    # Show plot in Streamlit
     st.pyplot(fig3)
-
     
 def load_investor_details(investor):
     st.title(investor)
