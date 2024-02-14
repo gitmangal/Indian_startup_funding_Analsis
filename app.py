@@ -43,23 +43,33 @@ def load_overall_analysis():
 
     temp_df['x_axis'] = temp_df['month'].astype('str') + '-' + temp_df['year'].astype('str')
 
-    fig3, ax3 = plt.subplots()
-    ax3.plot(temp_df['x_axis'], temp_df['amount'])
+    fig, ax = plt.subplots()
+    line, = ax.plot(temp_df['x_axis'], temp_df['amount'])
     
     # Add labels for each data point
     for i, txt in enumerate(temp_df['amount']):
-        ax3.annotate(txt, (temp_df['x_axis'][i], temp_df['amount'][i]), textcoords="offset points", xytext=(0,10), ha='center')
+        ax.annotate(txt, (temp_df['x_axis'][i], temp_df['amount'][i]), textcoords="offset points", xytext=(0,10), ha='center')
     
     # Set labels and title
-    ax3.set_xlabel('Month-Year')
-    ax3.set_ylabel('Amount')
+    ax.set_xlabel('Month-Year')
+    ax.set_ylabel('Amount')
     
-    # Use mplcursors to display information on hover
-    mplcursors.cursor(hover=True).connect(
-        "add", lambda sel: sel.annotation.set_text(f"Month-Year: {temp_df['x_axis'][sel.target.index]}\nAmount: {temp_df['amount'][sel.target.index]}")
-    )
+    # Function to handle mouse motion event
+    def motion(event):
+        if event.xdata is not None and event.ydata is not None:
+            index = int(round(event.xdata))  # Assuming x-axis labels are integers
+            if 0 <= index < len(temp_df):
+                amount = temp_df['amount'][index]
+                month_year = temp_df['x_axis'][index]
+                ax.set_title(f"Month-Year: {month_year}\nAmount: {amount}", fontsize=10)
+            else:
+                ax.set_title("")
+            fig.canvas.draw()
     
-    st.pyplot(fig3)
+    # Connect mouse motion event to the figure
+    fig.canvas.mpl_connect('motion_notify_event', motion)
+    
+    st.pyplot(fig)
 def load_investor_details(investor):
     st.title(investor)
     # load the recent 5 investments of the investor
