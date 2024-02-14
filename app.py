@@ -53,7 +53,7 @@ def load_overall_analysis():
     hover.tooltips = [("Month-Year", "@x_axis"), ("Amount", "@amount")]
     p.add_tools(hover)
 
-show(p)
+    show(p)
 
 def load_investor_details(investor):
     st.title(investor)
