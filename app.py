@@ -44,9 +44,9 @@ def load_overall_analysis():
     temp_df['x_axis'] = temp_df['month'].astype('str') + '-' + temp_df['year'].astype('str')
     fig3, ax3 = plt.subplots()
     ax3.plot(temp_df['x_axis'], temp_df['amount'])
-    ax3.set_xlabel('Month-Year')
-    ax3.set_ylabel('Amount')
-    st.pyplot(ax3)
+
+    st.pyplot(fig3)
+
     
 def load_investor_details(investor):
     st.title(investor)
@@ -73,9 +73,7 @@ def load_investor_details(investor):
         ax1.pie(verical_series,labels=verical_series.index,autopct="%0.01f%%")
 
         st.pyplot(fig1)
-
-    print(df.info())
-
+        
     df['year'] = df['date'].dt.year
     year_series = df[df['investors'].str.contains(investor)].groupby('year')['amount'].sum()
 
