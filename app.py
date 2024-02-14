@@ -45,15 +45,20 @@ def load_overall_analysis():
 
     fig3, ax3 = plt.subplots()
     ax3.plot(temp_df['x_axis'], temp_df['amount'])
-
+    
     # Add labels for each data point
     for i, txt in enumerate(temp_df['amount']):
         ax3.annotate(txt, (temp_df['x_axis'][i], temp_df['amount'][i]), textcoords="offset points", xytext=(0,10), ha='center')
-
-# Set labels and title
+    
+    # Set labels and title
     ax3.set_xlabel('Month-Year')
     ax3.set_ylabel('Amount')
-
+    
+    # Use mplcursors to display information on hover
+    mplcursors.cursor(hover=True).connect(
+        "add", lambda sel: sel.annotation.set_text(f"Month-Year: {temp_df['x_axis'][sel.target.index]}\nAmount: {temp_df['amount'][sel.target.index]}")
+    )
+    
     st.pyplot(fig3)
 def load_investor_details(investor):
     st.title(investor)
