@@ -34,7 +34,7 @@ def load_overall_analysis():
     with col4:
         st.metric('Funded Startups',num_startups)
 
-    st.header('MoM graph')
+    st.header('Month by month graph')
     selected_option = st.selectbox('Select Type',['Total','Count'])
     if selected_option == 'Total':
         temp_df = df.groupby(['year', 'month'])['amount'].sum().reset_index()
