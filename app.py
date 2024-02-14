@@ -43,14 +43,10 @@ def load_overall_analysis():
 
     temp_df['x_axis'] = temp_df['month'].astype('str') + '-' + temp_df['year'].astype('str')
 
-    fig3,axis3 = plt.subplot()
-    
+    fig3, ax3 = plt.subplots()
     ax3.plot(temp_df['x_axis'], temp_df['amount'])
-    st.pyplot(fig3)
-    hover = HoverTool()
-    hover.tooltips = [("Month-Year", "@x_axis"), ("Amount", "@amount")]
-    p.add_tools(hover)
 
+    st.pyplot(fig3)
 
 
 def load_investor_details(investor):
