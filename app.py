@@ -35,7 +35,7 @@ def load_overall_analysis():
         st.metric('Funded Startups',num_startups)
 
     st.header('Month by month graph')
-    selected_option = st.selectbox('Select Type',['Total','Count'])
+    selected_option = st.selectbox('Select Type',['Total investment in every months','Count of investment in every months'])
     if selected_option == 'Total':
         temp_df = df.groupby(['year', 'month'])['amount'].sum().reset_index()
     else:
@@ -45,7 +45,7 @@ def load_overall_analysis():
 
     fig3, ax3 = plt.subplots()
     ax3.plot(temp_df['x_axis'], temp_df['amount'])
-
+    plt.xticks(rotation=45)
     st.pyplot(fig3)
 
 
