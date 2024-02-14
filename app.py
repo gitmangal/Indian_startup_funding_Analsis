@@ -36,7 +36,7 @@ def load_overall_analysis():
 
     st.header('Month by month graph')
     selected_option = st.selectbox('Select Type',['Total investment in every months','Count of investment in every months'])
-    if selected_option == 'Total':
+    if selected_option == 'Total investment in every months':
         temp_df = df.groupby(['year', 'month'])['amount'].sum().reset_index()
     else:
         temp_df = df.groupby(['year', 'month'])['amount'].count().reset_index()
