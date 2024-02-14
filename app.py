@@ -62,7 +62,7 @@ def load_overall_analysis():
     df['vertical']=df['vertical'].str.replace('E-Commerce & M-Commerce platform','E-commerce')
     df['vertical']=df['vertical'].str.replace('E-Commerce','E-commerce')
     sanalysis = df.groupby('vertical')['amount'].sum().sort_values(ascending=False).head(10)
-    fig4, ax4 = plt.subplot
+    fig4, ax4 = plt.subplot()
     ax4.bar(sanalysis.index,sanalysis.values)
     st.pyplot(fig4)
     
