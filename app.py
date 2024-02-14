@@ -46,6 +46,7 @@ def load_overall_analysis():
     fig3, ax3 = plt.subplots()
     ax3.plot(temp_df['x_axis'], temp_df['amount'])
     plt.xticks(rotation=45)
+    plt.xticks(months[::6])
     st.pyplot(fig3)
 
 
