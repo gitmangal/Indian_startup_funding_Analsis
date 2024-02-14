@@ -46,7 +46,7 @@ def load_overall_analysis():
     ax3.plot(temp_df['x_axis'], temp_df['amount'])
     ax3.set_xlabel('Month-Year')
     ax3.set_ylabel('Amount')
-    
+    st.pyplot9(ax3)
     
 def load_investor_details(investor):
     st.title(investor)
