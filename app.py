@@ -43,18 +43,18 @@ def load_overall_analysis():
 
     temp_df['x_axis'] = temp_df['month'].astype('str') + '-' + temp_df['year'].astype('str')
 
-    p = figure(plot_width=800, plot_height=400, x_axis_label='Month-Year', y_axis_label='Amount')
+  fig3, ax3 = plt.subplots()
+    ax3.plot(temp_df['x_axis'], temp_df['amount'])
 
-    # Plot the line
-    p.line(temp_df['x_axis'], temp_df['amount'], line_width=2)
-    
-    # Add hover tool
-    hover = HoverTool()
-    hover.tooltips = [("Month-Year", "@x_axis"), ("Amount", "@amount")]
-    p.add_tools(hover)
+    # Add labels for each data point
+    for i, txt in enumerate(temp_df['amount']):
+        ax3.annotate(txt, (temp_df['x_axis'][i], temp_df['amount'][i]), textcoords="offset points", xytext=(0,10), ha='center')
 
-    show(p)
+# Set labels and title
+    ax3.set_xlabel('Month-Year')
+    ax3.set_ylabel('Amount')
 
+    st.pyplot(fig3)
 def load_investor_details(investor):
     st.title(investor)
     # load the recent 5 investments of the investor
