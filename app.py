@@ -49,9 +49,7 @@ def load_overall_analysis():
     nth_value = 5
     
     # Set tick positions and labels
-    x_values = temp_df['x_axis'][::nth_value]
     x_labels = temp_df['x_axis'].iloc[::nth_value]
-    ax3.set_xticks(x_values)
     ax3.set_xticklabels(x_labels, rotation=45)  # Rotate x-axis labels for better readability
     # Show plot in Streamlit
     st.pyplot(fig3)
