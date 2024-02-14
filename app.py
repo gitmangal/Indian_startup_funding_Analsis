@@ -43,7 +43,7 @@ def load_overall_analysis():
 
     temp_df['x_axis'] = temp_df['month'].astype('str') + '-' + temp_df['year'].astype('str')
 
-    p = figure(plot_width=800, plot_height=400, x_axis_label='Month-Year', y_axis_label='Amount')
+    fig3,axis = plt.subplot()
 
     ax3.plot(temp_df['x_axis'], temp_df['amount'])
     st.pyplot(fig3)
