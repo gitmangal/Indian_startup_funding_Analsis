@@ -55,7 +55,18 @@ def load_overall_analysis():
     ax3.set_xticklabels(x_labels, rotation=45)  # Rotate x-axis labels for better readability
     # Show plot in Streamlit
     st.pyplot(fig3)
+
     
+    # top sector 
+    st.header('Top 10 Sectors')
+    df['vertical']=df['vertical'].str.replace('eCommerce','E-commerce')
+    df['vertical']=df['vertical'].str.replace('ECommerce','E-commerce')
+    df['vertical']=df['vertical'].str.replace('E-Commerce & M-Commerce platform','E-commerce')
+    df['vertical']=df['vertical'].str.replace('E-Commerce','E-commerce')
+    sanalysis = df.groupby('vertical')['amount'].sum().sort_values(ascending=False).head(10)
+    fig4, ax4 = plt.subplot
+    ax4.bar(sanalysis.index,sanalysis.values)
+    st.plot(fig4)
 def load_investor_details(investor):
     st.title(investor)
     # load the recent 5 investments of the investor
