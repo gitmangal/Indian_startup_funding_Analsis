@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
-st.set_page_config(layout='wide',page_title='StartUp Analysis')
+st.set_page_config(page_title='StartUp Analysis')
 
 df = pd.read_csv('startup_cleaned.csv')
 df['date'] = pd.to_datetime(df['date'],errors='coerce')
