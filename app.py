@@ -62,20 +62,17 @@ def load_overall_analysis():
     df['vertical']=df['vertical'].str.replace('E-Commerce & M-Commerce platform','E-commerce')
     df['vertical']=df['vertical'].str.replace('E-Commerce','E-commerce')
     sanalysis = df.groupby('vertical')['amount'].sum().sort_values(ascending=False).head(10)
-    plt.figure(figsize=(10, 6))
-    plt.bar(sanalysis.index, sanalysis.values, color='skyblue')
+    # Create column chart
+    fig, ax = plt.subplots()
+    ax.bar(sanalysis.index, sanalysis.values, color='skyblue')
     
-    # Add labels and title
+    # Customize plot
+    plt.xticks(rotation=45, ha='right')
     plt.xlabel('Sectors')
     plt.ylabel('Values (in millions)')
-    plt.title('Investment/Valuation in Various Sectors')
     
-    # Rotate x-axis labels for better readability
-    plt.xticks(rotation=45, ha='right')
-    
-    # Show plot
-    plt.tight_layout()
-    plt.show()
+    # Display chart in Streamlit
+    st.pyplot(fig)
     
 def load_investor_details(investor):
     st.title(investor)
