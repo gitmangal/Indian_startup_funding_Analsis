@@ -63,7 +63,7 @@ def load_overall_analysis():
     df['vertical']=df['vertical'].str.replace('E-Commerce','E-commerce')
     sanalysis = df.groupby('vertical')['amount'].sum().sort_values(ascending=False).head(10)
     plt.figure(figsize=(10, 6))
-    plt.bar(sanalsis.index, sanalysis.values, color='skyblue')
+    plt.bar(sanalysis.index, sanalysis.values, color='skyblue')
     
     # Add labels and title
     plt.xlabel('Sectors')
