@@ -56,8 +56,8 @@ def load_overall_analysis():
     # Show plot inStreamlit
     st.pyplot(fig3)
 
-    col1,col2 = st.columns(2)
-    with col1:
+    col5,col6 = st.columns(2)
+    with col5:
         st.header('Top 10 Sectors')
         df['vertical']=df['vertical'].str.replace('eCommerce','E-commerce')
         df['vertical']=df['vertical'].str.replace('ECommerce','E-commerce')
@@ -75,7 +75,7 @@ def load_overall_analysis():
         
         # Display chart in Streamlit
         st.pyplot(fig)
-    with col2:
+    with col6:
         st.header('Top 10 Sectors')
         df['vertical']=df['vertical'].str.replace('eCommerce','E-commerce')
         df['vertical']=df['vertical'].str.replace('ECommerce','E-commerce')
