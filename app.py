@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 st.set_page_config(page_title='StartUp Analysis')
 
 df = pd.read_csv('startup_cleaned.csv')
+investorsdf = pd.read_csv('investors.csv')
 df['date'] = pd.to_datetime(df['date'],errors='coerce')
 df['month'] = df['date'].dt.month
 df['year'] = df['date'].dt.year
@@ -77,27 +78,10 @@ def load_overall_analysis():
         st.pyplot(fig4)
         
     with col6:
-        newdic = {}
-        for i, row in df.iterrows():
-            investors = row['investors'].split(',')
-            amount = row['amount']
-            for investor in investors:
-                investor = investor.strip()
-                if investor in newdic:
-                    newdic[investor] += amount / len(investors)
-                else:
-                    newdic[investor] = amount / len(investors)
-        #created a new dataframe for investers            
-        tempdf2 = pd.DataFrame(list(newdic.values()),index=list(newdic.keys()))
+        tpinvestors = investordf.groupby('index')['amount'].sum().sort_values(ascending=False).head(5)
         fig5, ax5 = plt.subplots()
-        ax5.bar(tempdf2.index, tempdf2.values)
-        plt.xticks(rotation=45, ha='right')
-        plt.xlabel('Investors')
-        plt.ylabel('Values (in millions)')
-        
-        # Display chart in Streamlit
+        ax4.bar(tpinvestors.index, tpinvestors.values)
         st.pyplot(fig5)
-
 
 def load_investor_details(investor):
     st.title(investor)
