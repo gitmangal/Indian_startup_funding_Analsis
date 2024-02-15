@@ -79,7 +79,7 @@ def load_overall_analysis():
     with col6:
         tpinvestors = investorsdf.groupby('index')['amount'].sum().sort_values(ascending=False).head(5)
         fig5, ax5 = plt.subplots()
-        ax4.bar(tpinvestors.index, tpinvestors.values)
+        ax5.bar(tpinvestors.index, tpinvestors.values)
         st.pyplot(fig5)
            
 def load_investor_details(investor):
