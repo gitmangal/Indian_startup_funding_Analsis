@@ -77,9 +77,11 @@ def load_overall_analysis():
         # Display chart in Streamlit
         st.pyplot(fig4)
     with col6:
-        tpinvestors = investorsdf.groupby('index')['amount'].sum().sort_values(ascending=False).head(5)
+        st.header('Top 10 Investor')
+        tpinvestors = investorsdf.groupby('index')['amount'].sum().sort_values(ascending=False).head(10)
         fig5, ax5 = plt.subplots()
         ax5.bar(tpinvestors.index, tpinvestors.values)
+        plt.xticks(rotation=45, ha='right')
         st.pyplot(fig5)
            
 def load_investor_details(investor):
