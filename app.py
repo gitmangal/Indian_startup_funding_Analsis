@@ -76,7 +76,6 @@ def load_overall_analysis():
         
         # Display chart in Streamlit
         st.pyplot(fig4)
-    with col6:
        
 def load_investor_details(investor):
     st.title(investor)
