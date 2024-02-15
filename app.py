@@ -55,25 +55,44 @@ def load_overall_analysis():
     ax3.set_xticklabels(x_labels, rotation=45)  # Rotate x-axis labels for better readability
     # Show plot inStreamlit
     st.pyplot(fig3)
-    
-    st.header('Top 10 Sectors')
-    df['vertical']=df['vertical'].str.replace('eCommerce','E-commerce')
-    df['vertical']=df['vertical'].str.replace('ECommerce','E-commerce')
-    df['vertical']=df['vertical'].str.replace('E-Commerce & M-Commerce platform','E-commerce')
-    df['vertical']=df['vertical'].str.replace('E-Commerce','E-commerce')
-    sanalysis = df.groupby('vertical')['amount'].sum().sort_values(ascending=False).head(10)
-    # Create column chart
-    fig, ax = plt.subplots()
-    ax.bar(sanalysis.index, sanalysis.values, color='skyblue')
-    
-    # Customize plot
-    plt.xticks(rotation=45, ha='right')
-    plt.xlabel('Sectors')
-    plt.ylabel('Values (in millions)')
-    
-    # Display chart in Streamlit
-    st.pyplot(fig)
-    
+
+    col1,col2 = st.columns(2)
+    with col1:
+        st.header('Top 10 Sectors')
+        df['vertical']=df['vertical'].str.replace('eCommerce','E-commerce')
+        df['vertical']=df['vertical'].str.replace('ECommerce','E-commerce')
+        df['vertical']=df['vertical'].str.replace('E-Commerce & M-Commerce platform','E-commerce')
+        df['vertical']=df['vertical'].str.replace('E-Commerce','E-commerce')
+        sanalysis = df.groupby('vertical')['amount'].sum().sort_values(ascending=False).head(10)
+        # Create column chart
+        fig, ax = plt.subplots()
+        ax.bar(sanalysis.index, sanalysis.values, color='skyblue')
+        
+        # Customize plot
+        plt.xticks(rotation=45, ha='right')
+        plt.xlabel('Sectors')
+        plt.ylabel('Values (in millions)')
+        
+        # Display chart in Streamlit
+        st.pyplot(fig)
+    with col2:
+        st.header('Top 10 Sectors')
+        df['vertical']=df['vertical'].str.replace('eCommerce','E-commerce')
+        df['vertical']=df['vertical'].str.replace('ECommerce','E-commerce')
+        df['vertical']=df['vertical'].str.replace('E-Commerce & M-Commerce platform','E-commerce')
+        df['vertical']=df['vertical'].str.replace('E-Commerce','E-commerce')
+        sanalysis = df.groupby('vertical')['amount'].sum().sort_values(ascending=False).head(10)
+        # Create column chart
+        fig, ax = plt.subplots()
+        ax.bar(sanalysis.index, sanalysis.values, color='skyblue')
+        
+        # Customize plot
+        plt.xticks(rotation=45, ha='right')
+        plt.xlabel('Sectors')
+        plt.ylabel('Values (in millions)')
+        
+        # Display chart in Streamlit
+        st.pyplot(fig)
 def load_investor_details(investor):
     st.title(investor)
     # load the recent 5 investments of the investor
