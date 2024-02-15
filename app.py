@@ -83,6 +83,9 @@ def load_overall_analysis():
         ax5.bar(tpinvestors.index, tpinvestors.values)
         plt.xticks(rotation=45, ha='right')
         st.pyplot(fig5)
+
+    st.head("Top startups year wise")
+    
            
 def load_investor_details(investor):
     st.title(investor)
