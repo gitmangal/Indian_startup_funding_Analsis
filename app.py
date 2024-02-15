@@ -77,8 +77,8 @@ def load_overall_analysis():
         st.pyplot(fig4)
         
     with col6:
-       newdic = {}
-       for i, row in df.iterrows():
+        newdic = {}
+        for i, row in df.iterrows():
             investors = row['investors'].split(',')
             amount = row['amount']
             for investor in investors:
