@@ -65,8 +65,8 @@ def load_overall_analysis():
         df['vertical']=df['vertical'].str.replace('E-Commerce','E-commerce')
         sanalysis = df.groupby('vertical')['amount'].sum().sort_values(ascending=False).head(10)
         # Create column chart
-        fig, ax = plt.subplots()
-        ax.bar(sanalysis.index, sanalysis.values, color='skyblue')
+        fig4, ax4 = plt.subplots()
+        ax4.bar(sanalysis.index, sanalysis.values)
         
         # Customize plot
         plt.xticks(rotation=45, ha='right')
@@ -74,25 +74,33 @@ def load_overall_analysis():
         plt.ylabel('Values (in millions)')
         
         # Display chart in Streamlit
-        st.pyplot(fig)
+        st.pyplot(fig4)
+        
     with col6:
-        st.header('Top 10 Sectors')
-        df['vertical']=df['vertical'].str.replace('eCommerce','E-commerce')
-        df['vertical']=df['vertical'].str.replace('ECommerce','E-commerce')
-        df['vertical']=df['vertical'].str.replace('E-Commerce & M-Commerce platform','E-commerce')
-        df['vertical']=df['vertical'].str.replace('E-Commerce','E-commerce')
-        sanalysis = df.groupby('vertical')['amount'].sum().sort_values(ascending=False).head(10)
-        # Create column chart
-        fig, ax = plt.subplots()
-        ax.bar(sanalysis.index, sanalysis.values, color='skyblue')
-        
-        # Customize plot
+       newdic = {}
+       for i, row in df.iterrows():
+            investors = row['investors'].split(',')
+            amount = row['amount']
+            for investor in investors:
+                investor = investor.strip()
+                if investor in newdic:
+                    newdic[investor] += amount / len(investors)
+                else:
+                    newdic[investor] = amount / len(investors)
+        #created a new dataframe for investers            
+        tempdf = pd.DataFrame(list(newdic.values()),index=list(newdic.keys()))
+        fig5, ax5 = plt.subplots()
+        ax5.bar(tempdf.index, tempdf.values)
         plt.xticks(rotation=45, ha='right')
-        plt.xlabel('Sectors')
+        plt.xlabel('Investors')
         plt.ylabel('Values (in millions)')
         
         # Display chart in Streamlit
-        st.pyplot(fig)
+        st.pyplot(fig5)
+
+df3 = pd.DataFrame(list(newdic.values()),index=list(newdic.keys()))
+print(df3)
+print(df2)
 def load_investor_details(investor):
     st.title(investor)
     # load the recent 5 investments of the investor
