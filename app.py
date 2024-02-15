@@ -76,7 +76,12 @@ def load_overall_analysis():
         
         # Display chart in Streamlit
         st.pyplot(fig4)
-       
+    with col6:
+        tpinvestors = investordf.groupby('index')['amount'].sum().sort_values(ascending=False).head(5)
+        fig5, ax5 = plt.subplots()
+        ax4.bar(tpinvestors.index, tpinvestors.values)
+        st.pyplot(fig5)
+           
 def load_investor_details(investor):
     st.title(investor)
     # load the recent 5 investments of the investor
