@@ -84,7 +84,8 @@ def load_overall_analysis():
         plt.xticks(rotation=45, ha='right')
         st.pyplot(fig5)
 
-    st.head("Top startups year wise")
+    st.header("Top startups year wise")
+    
     
            
 def load_investor_details(investor):
