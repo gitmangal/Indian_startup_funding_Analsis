@@ -88,9 +88,9 @@ def load_overall_analysis():
                 else:
                     newdic[investor] = amount / len(investors)
         #created a new dataframe for investers            
-        tempdf = pd.DataFrame(list(newdic.values()),index=list(newdic.keys()))
+        tempdf2 = pd.DataFrame(list(newdic.values()),index=list(newdic.keys()))
         fig5, ax5 = plt.subplots()
-        ax5.bar(tempdf.index, tempdf.values)
+        ax5.bar(tempdf2.index, tempdf2.values)
         plt.xticks(rotation=45, ha='right')
         plt.xlabel('Investors')
         plt.ylabel('Values (in millions)')
@@ -98,9 +98,7 @@ def load_overall_analysis():
         # Display chart in Streamlit
         st.pyplot(fig5)
 
-df3 = pd.DataFrame(list(newdic.values()),index=list(newdic.keys()))
-print(df3)
-print(df2)
+
 def load_investor_details(investor):
     st.title(investor)
     # load the recent 5 investments of the investor
