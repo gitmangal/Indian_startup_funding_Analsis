@@ -71,6 +71,7 @@ def load_overall_analysis():
 
     col5,col6 = st.columns(2)
     with col5:
+        st.header('Top 10 Startups')
         df['startup'] = df['startup'].str.replace('Flipkart.com','Flipkart')
         
         tpstr = df.groupby('startup')['amount'].sum().sort_values(ascending=False).head(10)
