@@ -27,7 +27,7 @@ def load_overall_analysis():
         st.markdown(
             f"""
             <div style='padding: 0px 7px; border: 1px solid #e6e6e6; border-radius: 10px;'>
-                <h4>{title}</h4>
+                <h5>{title}</h5>
                 <p>{content}</p>
             </div>
             """,
