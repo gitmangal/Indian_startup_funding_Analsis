@@ -71,24 +71,6 @@ def load_overall_analysis():
 
     col5,col6 = st.columns(2)
     with col5:
-        '''
-        st.header('Top 10 Sectors')
-        df['vertical']=df['vertical'].str.replace('eCommerce','E-commerce')
-        df['vertical']=df['vertical'].str.replace('ECommerce','E-commerce')
-        df['vertical']=df['vertical'].str.replace('E-Commerce & M-Commerce platform','E-commerce')
-        df['vertical']=df['vertical'].str.replace('E-Commerce','E-commerce')
-        sanalysis = df.groupby('vertical')['amount'].sum().sort_values(ascending=False).head(10)
-        # Create column chart
-        fig4, ax4 = plt.subplots()
-        ax4.bar(sanalysis.index, sanalysis.values)
-        
-        # Customize plot
-        plt.xticks(rotation=45, ha='right')
-        plt.xlabel('Sectors')
-        plt.ylabel('Values (in millions)')
-        
-        # Display chart in Streamlit
-        st.pyplot(fig4)'''
         df['startup'] = df['startup'].str.replace('Flipkart.com','Flipkart')
         
         tpstr = df.groupby('startup')['amount'].sum().sort_values(ascending=False).head(10)
