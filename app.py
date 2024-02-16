@@ -86,7 +86,7 @@ def load_overall_analysis():
 
     st.header("Top startups year wise")
     tmpdf2 = investorsdf.head(5)
-    st.dataframe(tempdf2)
+    st.dataframe(tmpdf2)
     
     
            
