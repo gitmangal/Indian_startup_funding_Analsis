@@ -22,10 +22,22 @@ def load_overall_analysis():
     # total funded startups
     num_startups = df['startup'].nunique()
 
+    # Define a function to create a card-like layout
+    def card(title, content):
+        st.markdown(
+            f"""
+            <div style='padding: 10px; border: 1px solid #e6e6e6; border-radius: 5px;'>
+                <h3>{title}</h3>
+                <p>{content}</p>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+
     col1,col2,col3,col4 = st.columns(4)
 
     with col1:
-        st.metric('Total',str(total) + ' Cr')
+        card('Total',str(total) + ' Cr')
     with col2:
         st.metric('Max', str(max_funding) + ' Cr')
 
