@@ -71,6 +71,7 @@ def load_overall_analysis():
 
     col5,col6 = st.columns(2)
     with col5:
+        '''
         st.header('Top 10 Sectors')
         df['vertical']=df['vertical'].str.replace('eCommerce','E-commerce')
         df['vertical']=df['vertical'].str.replace('ECommerce','E-commerce')
@@ -87,7 +88,22 @@ def load_overall_analysis():
         plt.ylabel('Values (in millions)')
         
         # Display chart in Streamlit
+        st.pyplot(fig4)'''
+        df['startup'] = df['startup'].str.replace('Flipkart.com','Flipkart')
+        
+        tpstr = df.groupby('startup')['amount'].sum().sort_values(ascending=False).head(10)
+        
+        fig4, ax4 = plt.subplots()
+        ax4.bar(tpstr.index, tpstr.values)
+        
+        # Customize plot
+        plt.xticks(rotation=45, ha='right')
+        plt.xlabel('startups')
+        plt.ylabel('Values (in Cr.)')
+        
+        # Display chart in Streamlit
         st.pyplot(fig4)
+        
     with col6:
         st.header('Top 10 Investor')
         tpinvestors = investorsdf.groupby('index')['amount'].sum().sort_values(ascending=False).head(10)
