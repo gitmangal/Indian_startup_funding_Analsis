@@ -39,13 +39,13 @@ def load_overall_analysis():
     with col1:
         card('Total',str(total) + ' Cr')
     with col2:
-        st.metric('Max', str(max_funding) + ' Cr')
+        card('Max', str(max_funding) + ' Cr')
 
     with col3:
-        st.metric('Avg',str(round(avg_funding)) + ' Cr')
+        card('Avg',str(round(avg_funding)) + ' Cr')
 
     with col4:
-        st.metric('Funded Startups',num_startups)
+        card('Funded Startups',num_startups)
 
     st.header('Month by month graph')
     selected_option = st.selectbox('Select Type',['Total investment in every months','Count of investment in every months'])
