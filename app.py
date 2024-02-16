@@ -88,7 +88,7 @@ def load_overall_analysis():
     def plot_chart():
         plt.figure(figsize=(10, 6))
         for startup in df['startup']:
-            plt.plot(df[investorsdf['startup'] == startup]['date'], df[df['startup'] == startup]['amount'], marker='o', label=startup)
+            plt.plot(df[df['startup'] == startup]['date'], df[df['startup'] == startup]['amount'], marker='o', label=startup)
         plt.xlabel('Year')
         plt.ylabel('Funding Amount')
         plt.legend()
