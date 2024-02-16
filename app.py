@@ -85,6 +85,7 @@ def load_overall_analysis():
         st.pyplot(fig5)
 
     st.header("Top startups year wise")
+    st.dataFrame(investorsdf.head(10))
     
     
            
