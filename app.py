@@ -26,7 +26,7 @@ def load_overall_analysis():
     def card(title, content):
         st.markdown(
             f"""
-            <div style='padding: 5px 10px; border: 1px solid #e6e6e6; border-radius: 10px;'>
+            <div style='padding: 0px 10px; border: 1px solid #e6e6e6; border-radius: 10px;'>
                 <h3>{title}</h3>
                 <p>{content}</p>
             </div>
