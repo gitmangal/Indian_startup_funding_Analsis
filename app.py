@@ -89,7 +89,7 @@ def load_overall_analysis():
         
     with col6:
         st.header('Top 10 Investor')
-        investorsdf['index'] = investorsdf['index'].str.replace(' and existing envestors',' ')
+        investorsdf['index'] = investorsdf['index'].str.replace('and existing envestors',' ')
         tpinvestors = investorsdf.groupby('index')['amount'].sum().sort_values(ascending=False).head(10)
         fig5, ax5 = plt.subplots()
         ax5.bar(tpinvestors.index, tpinvestors.values)
