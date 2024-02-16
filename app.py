@@ -97,7 +97,7 @@ def load_overall_analysis():
         st.pyplot(fig5)
     col7,col8 = st.columns(2)
     with col7:
-        st.header('Top 10 Sectors')
+        st.header('Top Sectors')
         df['vertical']=df['vertical'].str.replace('eCommerce','E-commerce')
         df['vertical']=df['vertical'].str.replace('ECommerce','E-commerce')
         df['vertical']=df['vertical'].str.replace('E-Commerce & M-Commerce platform','E-commerce')
@@ -107,6 +107,21 @@ def load_overall_analysis():
         fig4, ax4 = plt.subplots()
         ax4.pie(sanalysis.values, labels=sanalysis.index, autopct='%1.1f%%', startangle=140)
         st.pyplot(fig4)
+    with col7:
+        st.header('Top Cities')
+        tpcity = df.groupby('city')['amount'].sum().sort_values(ascending=False).head(6)
+        
+        fig4, ax4 = plt.subplots()
+        ax4.bar(tpcity.index, tpcity.values)
+        
+        # Customize plot
+        plt.xticks(rotation=45, ha='right')
+        plt.xlabel('City')
+        plt.ylabel('Values (in Cr.)')
+        
+        # Display chart in Streamlit
+        st.pyplot(fig4)
+        
    
     
            
