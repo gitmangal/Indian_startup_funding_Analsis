@@ -107,7 +107,7 @@ def load_overall_analysis():
         fig4, ax4 = plt.subplots()
         ax4.pie(sanalysis.values, labels=sanalysis.index, autopct='%1.1f%%', startangle=140)
         st.pyplot(fig4)
-    with col7:
+    with col8:
         st.header('Top Cities')
         tpcity = df.groupby('city')['amount'].sum().sort_values(ascending=False).head(6)
         
