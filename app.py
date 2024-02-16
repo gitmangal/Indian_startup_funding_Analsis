@@ -85,16 +85,7 @@ def load_overall_analysis():
         st.pyplot(fig5)
 
     st.header("Top startups year wise")
-    def plot_chart():
-        plt.figure(figsize=(10, 6))
-        for startup in df['startup']:
-            plt.plot(df[df['startup'] == startup]['date'], df[df['startup'] == startup]['amount'], marker='o', label=startup)
-        plt.xlabel('Year')
-        plt.ylabel('Funding Amount')
-        plt.legend()
-        plt.tight_layout()
-        return plt
-    st.pyplot(plot_chart())
+   
     
            
 def load_investor_details(investor):
