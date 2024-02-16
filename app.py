@@ -94,7 +94,7 @@ def load_overall_analysis():
         plt.legend()
         plt.tight_layout()
         return plt
-    
+    st.pyplot(plot_chart())
     
            
 def load_investor_details(investor):
