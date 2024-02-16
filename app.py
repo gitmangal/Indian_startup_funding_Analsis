@@ -105,7 +105,7 @@ def load_overall_analysis():
         sanalysis = df.groupby('vertical')['amount'].sum().sort_values(ascending=False).head(10)
         # Create column chart
         fig4, ax4 = plt.subplots()
-        ax4.pie(sanalysis.values, labels=sanalysis.values, autopct='%1.1f%%', startangle=140)
+        ax4.pie(sanalysis.values, labels=sanalysis.index, autopct='%1.1f%%', startangle=140)
         st.pyplot(fig4)
    
     
