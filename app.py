@@ -95,8 +95,18 @@ def load_overall_analysis():
         ax5.bar(tpinvestors.index, tpinvestors.values)
         plt.xticks(rotation=45, ha='right')
         st.pyplot(fig5)
-
-    st.header("Top startups year wise")
+    col7,col8 = st.columns(2)
+    with col7:
+        st.header('Top 10 Sectors')
+        df['vertical']=df['vertical'].str.replace('eCommerce','E-commerce')
+        df['vertical']=df['vertical'].str.replace('ECommerce','E-commerce')
+        df['vertical']=df['vertical'].str.replace('E-Commerce & M-Commerce platform','E-commerce')
+        df['vertical']=df['vertical'].str.replace('E-Commerce','E-commerce')
+        sanalysis = df.groupby('vertical')['amount'].sum().sort_values(ascending=False).head(10)
+        # Create column chart
+        fig4, ax4 = plt.subplots()
+        ax4.pie(sanalysis.values, labels=sanalysis.values, autopct='%1.1f%%', startangle=140)
+        st.pyplot(fig4)
    
     
            
