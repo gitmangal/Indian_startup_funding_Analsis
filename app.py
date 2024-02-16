@@ -27,7 +27,7 @@ def load_overall_analysis():
         st.markdown(
             f"""
             <div style='padding: 0px 7px; border: 1px solid #e6e6e6; border-radius: 10px;'>
-                <h3>{title}</h3>
+                <h4>{title}</h4>
                 <p>{content}</p>
             </div>
             """,
@@ -37,15 +37,15 @@ def load_overall_analysis():
     col1,col2,col3,col4 = st.columns(4)
 
     with col1:
-        card('Total',str(total) + ' Cr')
+        card('Total Investment',str(total) + ' Cr')
     with col2:
-        card('Max', str(max_funding) + ' Cr')
+        card('Max Investment', str(max_funding) + ' Cr')
 
     with col3:
-        card('Avg',str(round(avg_funding)) + ' Cr')
+        card('Avg Investment',str(round(avg_funding)) + ' Cr')
 
     with col4:
-        card('Funded Startups',num_startups)
+        card('Total Startups',num_startups)
 
     st.header('Month by month graph')
     selected_option = st.selectbox('Select Type',['Total investment in every months','Count of investment in every months'])
