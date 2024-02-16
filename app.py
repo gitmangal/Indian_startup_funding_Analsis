@@ -85,7 +85,7 @@ def load_overall_analysis():
         st.pyplot(fig5)
 
     st.header("Top startups year wise")
-    tmpdf2 = inverstorsdf.head(5)
+    tmpdf2 = investorsdf.head(5)
     st.dataframe(tempdf2)
     
     
