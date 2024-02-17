@@ -175,7 +175,7 @@ elif option == 'StartUp':
     if btn1:
         load_startup_details(select_startup)
 else:
-    selected_investor = st.sidebar.selectbox('Select Investor',sorted(set(df['investors'].str.split(',').sum())))
+    selected_investor = st.sidebar.selectbox('Select Investor',sorted(set(df['investors'].str.split(',').sum()),reverse=True))
     btn2 = st.sidebar.button('Find Investor Details')
     if btn2:
         load_investor_details(selected_investor)
