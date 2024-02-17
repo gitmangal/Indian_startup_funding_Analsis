@@ -165,9 +165,8 @@ def load_startup_details(select_startup):
     st.markdown('#### 1.About Startup')
     st.dataframe(startabout)
 
-    inv_series = df[df['startup'].str.contains(select_startup)]
-    sum_series = inv_series.groupby('investors').sum()
-    st.markdown('#### 1.About Startup')
+    inv_series = df[df['startup'].str.contains(select_startup)][[['date','investors','round','amount']]
+    st.markdown('#### 1.Investors')
     st.dataframe(sum_series)
 
 st.sidebar.title('Startup Funding Analysis')
