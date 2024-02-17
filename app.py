@@ -161,7 +161,7 @@ def load_investor_details(investor):
     st.pyplot(fig2)
 def load_startup_details(select_startup):
     st.header(select_startup)
-    startabout = df[df['startup'].str.contains(select_startup)][['year','vertical','subvertical,'city','round']]
+    startabout = df[df['startup'].str.contains(select_startup)][['year','vertical','subvertical','city','round']]
     st.markdown('#### 1.About Startup')
     st.dataframe(startabout)
 
