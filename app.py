@@ -161,13 +161,14 @@ def load_investor_details(investor):
     st.pyplot(fig2)
 def load_startup_details(select_startup):
     st.header(select_startup)
-    startabout = df[df['startup'].str.contains(select_startup)][['year','vertical','city','round']]
+    startabout = df[df['startup'].str.contains(select_startup)][['year','vertical','subvertical,'city','round']]
     st.markdown('#### 1.About Startup')
     st.dataframe(startabout)
 
     inv_series = df[df['startup'].str.contains(select_startup)]
+    sum_series = inv_series.groupby('investors').sum()
     st.markdown('#### 1.About Startup')
-    st.dataframe(inv_series)
+    st.dataframe(sum_series)
 
 st.sidebar.title('Startup Funding Analysis')
 
