@@ -161,9 +161,9 @@ def load_investor_details(investor):
     st.pyplot(fig2)
 def load_startup_details(select_startup):
     st.header(select_startup)
-    st.subheader('About Startup')
     startabout = df[df['startup'].str.contains(select_startup)][['year','vertical','city','round']]
-    st.Dataframe(startabout)
+    st.subheader('About Startup')
+    st.dataframe(startabout)
 
 st.sidebar.title('Startup Funding Analysis')
 
