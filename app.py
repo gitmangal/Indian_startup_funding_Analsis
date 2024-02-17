@@ -162,7 +162,7 @@ def load_investor_details(investor):
 def load_startup_details(select_startup):
     st.header(select_startup)
     startabout = df[df['startup'].str.contains(select_startup)][['year','vertical','city','round']]
-    st.markdown('##About Startup')
+    st.markdown('## About Startup')
     st.dataframe(startabout)
 
 st.sidebar.title('Startup Funding Analysis')
