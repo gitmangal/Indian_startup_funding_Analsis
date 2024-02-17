@@ -159,6 +159,8 @@ def load_investor_details(investor):
     ax2.plot(year_series.index,year_series.values)
 
     st.pyplot(fig2)
+def load_startup_details(select_startup):
+    st.header(select_startup)
 
 st.sidebar.title('Startup Funding Analysis')
 
