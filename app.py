@@ -162,7 +162,7 @@ def load_investor_details(investor):
 def load_startup_details(select_startup):
     st.header(select_startup)
     st.subheader('About Startup')
-    startabout = df[df['investors'].str.contains(select_startup)][['year','vertical','city','round']]
+    startabout = df[df['startup'].str.contains(select_startup)][['year','vertical','city','round']]
     st.Dataframe(startabout)
 
 st.sidebar.title('Startup Funding Analysis')
