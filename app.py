@@ -165,7 +165,7 @@ def load_startup_details(select_startup):
     st.markdown('#### 1.About Startup')
     st.dataframe(startabout)
 
-    inv_series = df[df['startup'].str.contains(select_startup)].groupby('investors').sum()
+    inv_series = df[df['startup'].str.contains(strip(select_startup))].groupby('investors').sum()
     st.markdown('#### 1.About Startup')
     st.dataframe(inv_series)
 
