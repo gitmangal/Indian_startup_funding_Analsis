@@ -165,7 +165,7 @@ def load_startup_details(select_startup):
     st.header(select_startup)
     startabout = df[df['startup'].str.contains(select_startup)][['year','vertical','subvertical','city','round']]
     st.dataframe(startabout)
-    inv_series = df[df['startup'].str.contains(select_startup)][[['date','investors','round','amount']]
+    inv_series = df[df['startup'].str.contains(select_startup)][['date','investors','round','amount']]
     st.dataframe(inv_series)
     
 
