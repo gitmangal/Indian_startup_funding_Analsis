@@ -164,11 +164,11 @@ def load_investor_details(investor):
 def load_startup_details(select_startup):
     st.header(select_startup)
     startabout = df[df['startup'].str.contains(select_startup)][['year','vertical','subvertical','city','round']]
-    st.markdown(" ### 1.About Startup ")
+    
     st.dataframe(startabout)
 
     inv_series = df[df['startup'].str.contains(select_startup)][[['date','investors','round','amount']]
-    st.markdown(" ### 2.Investors ")
+    
     st.dataframe(sum_series)
     
 
