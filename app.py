@@ -171,14 +171,19 @@ def load_startup_details(select_startup):
     inv_series = df[df['startup'].str.contains(select_startup)][['date','investors','round','amount']]
     st.dataframe(inv_series)
     
-    col1, col2, col3 = st.columns(3)
+    col1, col2 = st.columns(2)
     with col1:
         sub_series = df[df['startup'].str.contains(select_startup)].groupby('subvertical')['year'].sum()
         st.subheader('subindustry')
         fig9, ax9 = plt.subplots()
         ax9.pie(sub_series, labels=sub_series.index, autopct="%0.01f%%")
         st.pyplot(fig9)
-
+    with col2:
+        ver_series = df[df['startup'].str.contains(select_startup)].groupby('vertical')['year'].sum()
+        st.subheader('industry')
+        fig10, ax10 = plt.subplots()
+        ax10.pie(ver_series, labels=ver_series.index, autopct="%0.01f%%")
+        st.pyplot(fig10)
     
 
 st.sidebar.title('Startup Funding Analysis')
