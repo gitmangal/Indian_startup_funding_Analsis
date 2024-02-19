@@ -2,6 +2,10 @@
 
 A Streamlit dashboard for analyzing Indian startups.
 
+## Demo
+
+[Indian_startup_analysis](https://g4diqhlttsfjqqmbezebss.streamlit.app/)
+
 ## Installation
 
 To run this dashboard locally, follow these steps:
@@ -25,9 +29,6 @@ The data used in this dashboard is sourced from [Kaggle](https://www.kaggle.com/
 - Pandas
 - matplotlib
 
-## Demo
-
-[Indian_startup_analysis](https://g4diqhlttsfjqqmbezebss.streamlit.app/)
 
 ## Contributing
 
